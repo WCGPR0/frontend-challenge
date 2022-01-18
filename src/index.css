@@ -1,8 +1,28 @@
+@font-face {
+  font-family: "CircularStd-Black";
+  src: url("https://ender.com/circ-black.woff2");
+}
+
+@font-face {
+  font-family: "CircularStd-Book";
+  src: url("https://ender.com/circ-book.woff2");
+}
+
+@font-face {
+  font-family: "CircularStd-Book";
+  src: url("https://ender.com/circ-bold.woff2");
+  font-weight: bold;
+}
+
 body {
   margin: 0;
-  font-family: Helvetica, sans-serif;
+  font-family: "CircularStd-Book", Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h2 {
+  font-family: "CircularStd-Black";
 }
 
 code {

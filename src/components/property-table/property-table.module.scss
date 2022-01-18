@@ -2,17 +2,47 @@
   border-collapse: collapse;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
-  box-shadow: 0 0 20 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   width: 100%;
+  cursor: default;
 
   thead tr {
     background-color: #d8d8d8;
     text-align: left;
     font-weight: bold;
     min-width: 400px;
+
+    th {
+      padding: 15px;
+    }
   }
 
-  tbody tr:last-of-type {
-    border-bottom: 2px solid #d8d8d8;
+  tbody {
+    tr {
+      td {
+        padding: 15px;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      &:last-of-type {
+        border-bottom: 2px solid #d8d8d8;
+      }
+    }
   }
+}
+
+.emptyRow {
+  position: relative;
+  padding: 0px !important;
+  vertical-align: baseline;
+}
+
+.emptyTable {
+  flex: 1;
 }

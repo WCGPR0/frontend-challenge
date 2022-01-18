@@ -1,34 +1,30 @@
-import React, { useState } from "react";
+import { Loader } from "../loader";
 import styles from "./property-card.module.scss";
 
-const PropertyCard = (props) => {
-  const [property, setProperty] = useState({
-    name: "Property Name",
-    address: "Address",
-    rent: "$Base rent",
-    squareFootage: "1000 sqft.",
-    monthlyPSF: "$1.00/sqft/mo",
-    yearlyPSF: "$1.00/sqft/year"
-  });
-
+const PropertyCard = ({ data, isLoading, onClick }) => {
+  const baseRent = Number.parseFloat(
+    data.baseRent.replace(/[^0-9.-]+/g, "")
+  ).toFixed(2);
   return (
-    <div className={styles["property-card"]}>
-      <div className={styles["property-card-title"]}>{property.name}</div>
+    <div className={styles["property-card"]} onClick={() => onClick(data.id)}>
+      {isLoading && <Loader />}
+      <div className={styles["property-card-title"]}>{data.name}</div>
       <div className={styles["property-card-description"]}>
         <div className={styles["property-card-description-address"]}>
-          {property.address}
+          {data.address1} <br />
+          {data.address2}
         </div>
         <div className={styles["property-card-description-rent"]}>
-          {property.rent}
+          {data.baseRent}
         </div>
         <div className={styles["property-card-description-squareFootage"]}>
-          {property.squareFootage}
+          {`${data.sqft} sqft.`}
         </div>
         <div className={styles["property-card-description-monthlyPSF"]}>
-          {property.monthlyPSF}
+          {`${(baseRent / data.sqft).toFixed(2)}/sqft/mo`}
         </div>
         <div className={styles["property-card-description-yearlyPSF"]}>
-          {property.yearlyPSF}
+          {`${((baseRent / data.sqft) * 12).toFixed(2)}/sqft/year`}
         </div>
       </div>
     </div>
